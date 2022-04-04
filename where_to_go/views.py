@@ -16,9 +16,20 @@ def index(request):
                 "properties": {
                     "title": place.title,
                     "placeId": place.placeId,
-                    "detailsUrl": place.detailsUrl
-                }
-            }
+                    "detailsUrl": {
+                        "title": place.title,
+                        "imgs": [
+                            image.photo.url for image in place.images.all()
+                        ],
+                        "description_short": place.description_short,
+                        "description_long": place.description_long,
+                        "coordinates": {
+                            "lat": place.coordinates_lat,
+                            "lng": place.coordinates_lng,
+                        },
+                    },
+                },
+            },
         )
     geojson = {
         "type": "FeatureCollection",
