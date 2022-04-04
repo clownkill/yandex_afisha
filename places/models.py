@@ -2,9 +2,34 @@ from django.db import models
 
 
 class Place(models.Model):
-    title = models.CharField(max_length=200, verbose_name='Название места')
-    description_short = models.TextField(verbose_name='Короткое описание', blank=True)
-    description_long = models.TextField(verbose_name='Полное описание', blank=True)
+    placeId = models.CharField(
+        max_length=200,
+        verbose_name='Уникальный идентификатор места',
+        blank=True
+    )
+    detailsUrl = models.CharField(
+        max_length=200,
+        verbose_name='Путь к JSON-файлу с деталями',
+        blank=True
+    )
+    title = models.CharField(
+        max_length=200,
+        verbose_name='Название места',
+        blank=True
+    )
+    project_title = models.CharField(
+        max_length=200,
+        verbose_name='Название проекта места',
+        blank=True
+    )
+    description_short = models.TextField(
+        verbose_name='Короткое описание',
+        blank=True
+    )
+    description_long = models.TextField(
+        verbose_name='Полное описание',
+        blank=True
+    )
     coordinates_lng = models.DecimalField(
         decimal_places=14,
         max_digits=16,
@@ -19,7 +44,7 @@ class Place(models.Model):
     )
 
     def __str__(self):
-        return self.title
+        return self.project_title
 
 
 class Image(models.Model):
