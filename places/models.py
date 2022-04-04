@@ -32,7 +32,7 @@ class Image(models.Model):
         null=True,
         on_delete=models.SET_NULL
     )
-    photo = models.ImageField(verbose_name='Изображение')
+    photo = models.ImageField(verbose_name='Изображение', )
 
     def __str__(self):
         return f'{self.id}. {self.name}'
