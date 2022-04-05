@@ -7,11 +7,6 @@ class Place(models.Model):
         verbose_name='Уникальный идентификатор места',
         blank=True
     )
-    detailsUrl = models.CharField(
-        max_length=200,
-        verbose_name='Путь к JSON-файлу с деталями',
-        blank=True
-    )
     title = models.CharField(
         max_length=200,
         verbose_name='Название места',
