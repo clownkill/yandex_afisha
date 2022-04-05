@@ -43,6 +43,10 @@ class Place(models.Model):
         verbose_name='Широта'
     )
 
+    class Meta:
+        verbose_name = 'Место'
+        verbose_name_plural = 'Места'
+
     def __str__(self):
         return self.project_title
 
@@ -57,7 +61,13 @@ class Image(models.Model):
         null=True,
         on_delete=models.SET_NULL
     )
-    photo = models.ImageField(verbose_name='Изображение', )
+    position = models.IntegerField(verbose_name='Позиция', blank=True)
+    photo = models.ImageField(verbose_name='Изображение')
+
+    class Meta:
+        ordering = ['position']
+        verbose_name = 'Изображение'
+        verbose_name_plural = 'Изображения'
 
     def __str__(self):
         return f'{self.id}. {self.name}'

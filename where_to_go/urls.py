@@ -21,7 +21,7 @@ from django.conf import settings
 from .views import index, place_json
 
 urlpatterns = [
-    path('places/<int:place_id>/', place_json, name='places'),
+    path('places/<int:place_id>/', place_json),
     path('', index),
     path('admin/', admin.site.urls),
 ]
