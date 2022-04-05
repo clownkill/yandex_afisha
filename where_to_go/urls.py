@@ -18,10 +18,10 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 
-from .views import index, page_json
+from .views import index, place_json
 
 urlpatterns = [
-    path('places/<int:id>/', page_json),
+    path('places/<int:place_id>/', place_json, name='places'),
     path('', index),
     path('admin/', admin.site.urls),
 ]
