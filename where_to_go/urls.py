@@ -18,9 +18,10 @@ from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
 
-from .views import index
+from .views import index, page
 
 urlpatterns = [
+    path('places/<int:id>/', page),
     path('', index),
     path('admin/', admin.site.urls),
 ]

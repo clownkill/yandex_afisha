@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
 
 from places.models import Place
 
@@ -33,3 +34,8 @@ def get_geojson():
 
 def index(request):
     return render(request, 'index.html', {'geojson': get_geojson()})
+
+
+def page(request, id):
+    place = get_object_or_404(Place, pk=id)
+    return HttpResponse(place.project_title)
