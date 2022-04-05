@@ -2,9 +2,11 @@ from django.shortcuts import render
 
 from places.models import Place
 
-def index(request):
+
+def get_geojson():
     places = Place.objects.all()
     features = []
+
     for place in places:
         features.append(
             {
@@ -16,25 +18,18 @@ def index(request):
                 "properties": {
                     "title": place.title,
                     "placeId": place.placeId,
-                    "detailsUrl": {
-                        "title": place.title,
-                        "imgs": [
-                            image.photo.url for image in place.images.all()
-                        ],
-                        "description_short": place.description_short,
-                        "description_long": place.description_long,
-                        "coordinates": {
-                            "lat": place.coordinates_lat,
-                            "lng": place.coordinates_lng,
-                        },
-                    },
+                    "detailsUrl": place.detailsUrl,
                 },
             },
         )
+
     geojson = {
-        "type": "FeatureCollection",
-        "features": features
+      "type": "FeatureCollection",
+      "features": features
     }
 
-    return render(request, 'index.html', context=geojson)
+    return geojson
 
+
+def index(request):
+    return render(request, 'index.html', {'geojson': get_geojson()})
