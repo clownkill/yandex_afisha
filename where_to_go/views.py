@@ -40,7 +40,7 @@ def place_json(request, place_id):
     place = get_object_or_404(Place, pk=place_id)
 
     page_response_data = {
-        "title": place.project_title,
+        "title": place.title,
         "imgs": [image.photo.url for image in place.images.all()],
         "description_short": place.description_short,
         "description_long": place.description_long,
