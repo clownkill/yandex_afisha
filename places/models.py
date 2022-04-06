@@ -39,6 +39,7 @@ class Place(models.Model):
     )
 
     class Meta:
+        ordering = ['placeId']
         verbose_name = 'Место'
         verbose_name_plural = 'Места'
 
@@ -56,8 +57,13 @@ class Image(models.Model):
         null=True,
         on_delete=models.SET_NULL
     )
-    position = models.IntegerField(verbose_name='Позиция', blank=True)
     photo = models.ImageField(verbose_name='Изображение')
+    position = models.PositiveIntegerField(
+        verbose_name='Позиция',
+        default=0,
+        blank=False,
+        null=False
+    )
 
     class Meta:
         ordering = ['position']
@@ -65,4 +71,4 @@ class Image(models.Model):
         verbose_name_plural = 'Изображения'
 
     def __str__(self):
-        return f'{self.id}. {self.name}'
+        return self.name
