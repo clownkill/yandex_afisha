@@ -22,5 +22,5 @@ class PlaceAdmin(SortableAdminMixin, admin.ModelAdmin):
 
 
 @admin.register(Image)
-class ImageAdmin(SortableAdminMixin, admin.ModelAdmin):
+class ImageAdmin(admin.ModelAdmin):
     pass
