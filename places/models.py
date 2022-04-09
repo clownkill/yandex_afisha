@@ -46,7 +46,8 @@ class Image(models.Model):
     )
     photo = models.ImageField(verbose_name='Изображение')
     position = models.PositiveIntegerField(
-        verbose_name='Позиция'
+        verbose_name='Позиция',
+        blank=True
     )
 
     class Meta:
