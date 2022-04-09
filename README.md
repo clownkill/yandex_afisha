@@ -20,6 +20,7 @@ pip install -r requirements.txt
 ```
 SECRET_KEY=секретный_код_проекта
 DEBUG=включить(True)/выключить(False) режим отладки
+ALLOWED_HOSTS=список разрешенных хостов
 ```
 
 ## Как запустить
