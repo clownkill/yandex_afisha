@@ -4,8 +4,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from places.models import Place
 
 
-def get_geojson():
-    places = Place.objects.all()
+def get_geojson(places):
     features = []
 
     for place in places:
@@ -33,7 +32,10 @@ def get_geojson():
 
 
 def index(request):
-    return render(request, 'index.html', {'geojson': get_geojson()})
+    places = Place.objects.all()
+    geojson = get_geojson(places)
+
+    return render(request, 'index.html', {'geojson': geojson})
 
 
 def place_json(request, place_id):
