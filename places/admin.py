@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.utils.safestring import mark_safe
+from django.contrib.admin import ModelAdmin
 from django.utils.html import format_html
 from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
 
@@ -24,4 +24,4 @@ class PlaceAdmin(SortableAdminMixin, admin.ModelAdmin):
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
-    pass
+    raw_id_fields = ['place', ]
